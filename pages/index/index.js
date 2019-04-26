@@ -84,7 +84,7 @@ Page({
       }
     }
     wx.setNavigationBarTitle({
-      title: wx.getStorageSync('mallName')
+      title: "优嘉一品"
     })
     /**
      * 示例：
@@ -94,6 +94,7 @@ Page({
       type: 'new'
     }).then(function(res) {
       if (res.code == 700) {
+        console.log(res)
         wx.showModal({
           title: '提示',
           content: '请在后台添加 banner 轮播图片，自定义类型填写 index',
@@ -184,6 +185,7 @@ Page({
         loadingMoreHidden: true,
         goods: goods,
       });
+      console.log(that)
     })
   },
   getCoupons: function() {

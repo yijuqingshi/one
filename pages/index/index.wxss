@@ -81,25 +81,24 @@ swiper-item image {
   justify-content: space-between;  
   flex-wrap:wrap;
   box-sizing: content-box;
-  padding: 24rpx;
-  background-color: #F2f2f2;
+  padding: 10rpx;
+  /* background-color: #F2f2f2; */
 }
 .goods-box{
-  width: 339rpx;
-  height: 472rpx;
+  width: 100%;
+  height: 33%;
   background-color: #fff;
   overflow: hidden;
-  margin-bottom: 24rpx;
-  border-radius:5px;
+  margin: 0rpx 20rpx 20rpx;
 }
 .goods-box .img-box{
-  width: 339rpx;
-  height: 339rpx;
+  width: 100%;
+  height: 33%;
   overflow: hidden;
 }
-.goods-box .img-box image{
-   width: 339rpx;
-   height: 339rpx;
+.goods-box image{
+   width: 100%;
+   border-radius: 30rpx;
 }
 .goods-box .goods-title{
   width: 280rpx;
