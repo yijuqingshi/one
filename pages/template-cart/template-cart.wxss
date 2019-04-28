@@ -16,7 +16,7 @@ page{
 }
 .to-index-btn{
     color:#fff;
-    background:#e64340;
+    background:#E30050;
     border-radius:6px;
     width:300rpx;
     height:70rpx;
@@ -186,7 +186,7 @@ page{
     width:240rpx;
     text-align: center;
     line-height: 100rpx;
-    background-color: #e64340;
+    background-color: #E30050;
     font-size:32rpx;
     color:#ffffff;
 }
@@ -214,5 +214,5 @@ page{
     background-size: 40rpx auto; 
 }
 .jiesuan-box .total{
-    color: #e64340;
+    color: #E30050;
 }

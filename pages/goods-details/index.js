@@ -133,18 +133,18 @@ Page({
     });
     this.bindGuiGeTap();
   },
-  // toPingtuan: function(e) {
-  //   let pingtuanopenid = 0
-  //   if (e.currentTarget.dataset.pingtuanopenid) {
-  //     pingtuanopenid = e.currentTarget.dataset.pingtuanopenid
-  //   }
-  //   this.setData({
-  //     shopType: "toPingtuan",
-  //     selectSizePrice: this.data.goodsDetail.basicInfo.pingtuanPrice,
-  //     pingtuanopenid: pingtuanopenid
-  //   });
-  //   this.bindGuiGeTap();
-  // },
+  toPingtuan: function(e) {
+    let pingtuanopenid = 0
+    if (e.currentTarget.dataset.pingtuanopenid) {
+      pingtuanopenid = e.currentTarget.dataset.pingtuanopenid
+    }
+    this.setData({
+      shopType: "toPingtuan",
+      selectSizePrice: this.data.goodsDetail.basicInfo.pingtuanPrice,
+      pingtuanopenid: pingtuanopenid
+    });
+    this.bindGuiGeTap();
+  },
   /**
    * 规格选择弹出框
    */

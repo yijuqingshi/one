@@ -1,13 +1,13 @@
 <import src="../../wxParse/wxParse.wxml" />
 <view class="container">
-  <view class="goods-des-info">
+  <!-- <view class="goods-des-info">
     <view class="goods-img">
       <image src="{{goodsDetail.pics[1].pic}}" class="image" mode="aspectFill" lazy-load="true" />
     </view>
     <view class="pop-goods-name">{{goodsDetail.basicInfo.name}}</view>
     <view class="pop-goods-desc">{{goodsDetail.basicInfo.characteristic}}</view>
-    <view class="pop-goods-price">{{goodsDetail.basicInfo.originalPrice}}¥/5斤</view>
-  </view>
+    <view class="pop-goods-price">¥ {{goodsDetail.basicInfo.originalPrice}}</view>
+  </view> -->
   <view class="goods-details">
     <view class="goods-text">
       <template is="wxParse" data="{{wxParseData:article.nodes}}" />
@@ -17,16 +17,16 @@
   <view wx:if="{{!curGoodsKanjia}}" class="footer-box">
     <view class="contact">
       <contact-button style="opacity:0;position:absolute;" type="default-dark" session-from="weapp" size="27"></contact-button>
-      <view style='position:absolute;bottom:10rpx;'> 客服 </view>
+      <view style='position:absolute;bottom:10rpx;'></view>
     </view>
     <view class="shop-cart-btn" bindtap="goShopCar">
-      <view class="shop-num">({{shopNum}})</view>
-      <view style='position:absolute;bottom:10rpx;'> 购物车 </view>
+      <!-- <view class="shop-num">({{shopNum}})</view> -->
+      <view style='position:absolute;bottom:10rpx;'></view>
     </view>
     <view wx:if="{{!goodsDetail.basicInfo.pingtuan}}" class="join-shop-cart" bindtap="toAddShopCar">加入购物车</view>
     <view wx:if="{{!goodsDetail.basicInfo.pingtuan}}" class="now-buy" bindtap="tobuy">立即购买</view>
-    <!-- <view wx:if="{{goodsDetail.basicInfo.pingtuan}}" class="join-shop-cart" bindtap="tobuy">单独购买</view>
-    <view wx:if="{{goodsDetail.basicInfo.pingtuan}}" class="now-buy" bindtap="toPingtuan">发起拼团</view> -->
+    <view wx:if="{{goodsDetail.basicInfo.pingtuan}}" class="join-shop-cart" bindtap="tobuy">单独购买</view>
+    <view wx:if="{{goodsDetail.basicInfo.pingtuan}}" class="now-buy" bindtap="toPingtuan">发起拼团</view>
   </view>
   <view class="show-popup" hidden="{{hideShopPopup}}" catchtouchmove="true">
     <view class="popup-mask" bindtap="closePopupTap"></view>
