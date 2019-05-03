@@ -41,7 +41,7 @@
                     <view wx:if="{{item.dateEndType == 1}}"> 领取 {{item.dateEndDays}} 天内有效 </view>
                   </view>
                   <view class="weui-media-box__info__meta" style='float:right;'>
-                    <button class="weui-btn mini-btn" type="warn" size="mini" bindtap="getCounpon" data-id="{{item.id}}">立即领取</button>
+                    <button class="btn_receive" size="mini" bindtap="getCounpon" data-id="{{item.id}}">立即领取</button>
                   </view>
                 </view>
               </view>

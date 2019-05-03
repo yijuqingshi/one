@@ -38,9 +38,9 @@
 
   <block wx:if="{{vipLevel > 0}}">
   <view style="height:10rpx;background: #eee;width:100%;"></view>
-  <view class="my-item" wx:if="{{!apiUserInfoMap.base.isSeller}}">
+  <!-- <view class="my-item" wx:if="{{!apiUserInfoMap.base.isSeller}}">
     <navigator url="/pages/fx/apply-status" hover-class="navigator-hover">成为分销商</navigator>
-  </view>
+  </view> -->
   <view class="my-item" wx:if="{{apiUserInfoMap.base.isSeller}}">
     <navigator url="/pages/fx/apply-status" hover-class="navigator-hover">分销中心</navigator>
   </view>
@@ -53,18 +53,18 @@
   </block>
 
   <view style="height:10rpx;background: #eee;width:100%;"></view>
-  <view class="my-item" wx:if="{{vipLevel > 0}}">
+  <!-- <view class="my-item" wx:if="{{vipLevel > 0}}">
     <navigator url="/pages/maidan/index" hover-class="navigator-hover">优惠买单</navigator>
-  </view>
+  </view> -->
   <view class="my-item">
     <navigator url="/pages/asset/index" hover-class="navigator-hover">资金明细</navigator>
   </view>
   <view class="my-item">
     <navigator url="/pages/sign/index" hover-class="navigator-hover">每日签到</navigator>
   </view>
-  <view class="my-item">
+  <!-- <view class="my-item">
     <navigator url="/pages/score-excharge/index" hover-class="navigator-hover">积分兑换</navigator>
-  </view>  
+  </view>   -->
   <view class="my-item">
     <navigator url="/pages/select-address/index" hover-class="navigator-hover">收货地址</navigator>
   </view>
@@ -84,7 +84,7 @@
     <button open-type="getPhoneNumber" bindgetphonenumber="getPhoneNumber">绑定手机号码</button>
   </view>
   <view class="my-item to-authorize">
-    <button type="warn" bindtap="relogin">重新授权登录</button>
+    <button class="re_login" bindtap="relogin">重新授权登录</button>
   </view>
   
   <view style="height:20rpx;background: #eee;width:100%;"></view>

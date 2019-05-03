@@ -2,7 +2,7 @@
   display: flex;
   padding-top:50rpx;
   height: 150rpx;
-  background-color: #e85654;
+  background-color: #E30050;
 }
 .asset .item {
   display: flex;
@@ -17,7 +17,7 @@
 .btn-view {
   text-align: right;
   height: 70rpx;
-  background-color: #e85654;
+  background-color: #E30050;
   padding-right:40rpx;
   padding-bottom:30rpx;  
 }

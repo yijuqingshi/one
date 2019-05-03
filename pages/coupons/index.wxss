@@ -13,5 +13,9 @@ page,
   border-color:#ccc !important ;
 }
 .price {
-  color:#e64340;
+  color:#E30050;
+}
+.btn_receive{
+  background-color: #E30050;
+    color:#fff;
 }

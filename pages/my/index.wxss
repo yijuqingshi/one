@@ -102,3 +102,7 @@
   margin: 20rpx;
   width: 100%;
 }
+.re_login{
+  background-color: #E30050;
+  color: white;
+}
