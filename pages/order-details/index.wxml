@@ -57,7 +57,7 @@
     <view class="goods-list">
             <view class="list-title">商品信息</view>
             <form bindsubmit="submitReputation" report-submit="true">
-            <block wx:for-items="{{orderDetail.goods}}" wx:key="{{index}}">
+            <block wx:for-items="{{orderDetail.goods}}" wx:key="id">
             <view class="a-goods">
                 <view class="img-box">
                     <image src="{{item.pic}}" class="img" />
@@ -128,3 +128,4 @@
             </view>
         </view>
 </view>
+<float-menu /> 

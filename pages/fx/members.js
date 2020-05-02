@@ -1,5 +1,5 @@
 const app = getApp()
-const WXAPI = require('../../wxapi/main')
+const WXAPI = require('apifm-wxapi')
 
 var sliderWidth = 96;
 Page({
@@ -49,6 +49,7 @@ Page({
     WXAPI.fxMembers({
       token: wx.getStorageSync('token')
     }).then(res => {
+		console.log(res.data)
       if (res.code == 700) {
         _this.setData({
           members: [],

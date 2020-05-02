@@ -1,4 +1,4 @@
-const WXAPI = require('../../wxapi/main')
+const WXAPI = require('apifm-wxapi')
 const CONFIG = require('../../config.js')
 //获取应用实例
 var app = getApp();
@@ -6,8 +6,7 @@ Page({
   data: {
     banners:[],
     swiperMaxNumber: 0,
-    swiperCurrent: 0,
-    height: wx.getSystemInfoSync().windowHeight
+    swiperCurrent: 0
   },
   onLoad:function(){
     const _this = this
@@ -51,11 +50,6 @@ Page({
     })
   },
   goToIndex: function (e) {
-    WXAPI.addTempleMsgFormid({
-      token: wx.getStorageSync('token'),
-      type: 'form',
-      formId: e.detail.formId
-    })
     if (app.globalData.isConnected) {
       wx.setStorage({
         key: 'app_show_pic_version',
@@ -67,6 +61,14 @@ Page({
     } else {
       wx.showToast({
         title: '当前无网络',
+        icon: 'none',
+      })
+    }
+  },
+  imgClick(){
+    if (this.data.swiperCurrent + 1 != this.data.swiperMaxNumber) {
+      wx.showToast({
+        title: '左滑进入',
         icon: 'none',
       })
     }

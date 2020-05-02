@@ -1,4 +1,7 @@
 {
-  "enablePullDownRefresh": false,
-  "navigationBarTitleText": "优嘉一品"
+	"enablePullDownRefresh": true,
+	"navigationStyle": "custom",
+	"usingComponents": {
+		"navigation": "/components/navigation/navigation"
+	}
 }

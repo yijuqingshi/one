@@ -1,3 +1,6 @@
 {
-    "navigationBarTitleText":  "待付款订单"
+    "navigationBarTitleText":  "确认订单",
+	"usingComponents": {
+		"auth": "/components/auth/auth"
+	}
 }

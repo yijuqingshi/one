@@ -1,17 +1,31 @@
 {
 	"description": "项目配置文件。",
 	"setting": {
-		"urlCheck": false,
+		"urlCheck": true,
 		"es6": true,
+		"enhance": true,
 		"postcss": false,
+		"preloadBackgroundData": false,
 		"minified": true,
 		"newFeature": true,
-		"autoAudits": false
+		"coverView": true,
+		"nodeModules": true,
+		"autoAudits": false,
+		"showShadowRootInWxmlPanel": true,
+		"scopeDataCheck": false,
+		"checkInvalidKey": true,
+		"checkSiteMap": true,
+		"uploadWithSourceMap": true,
+		"babelSetting": {
+			"ignore": [],
+			"disablePlugins": [],
+			"outputPath": ""
+		}
 	},
 	"compileType": "miniprogram",
-	"libVersion": "2.4.3",
+	"libVersion": "2.10.1",
 	"appid": "wxa26bcaa93ee1df59",
-	"projectname": "one",
+	"projectname": "fire-shop-lite",
 	"scripts": {},
 	"simulatorType": "wechat",
 	"simulatorPluginLibVersion": {},
@@ -33,41 +47,69 @@
 			"list": []
 		},
 		"miniprogram": {
-			"current": 5,
+			"current": 7,
 			"list": [
 				{
 					"id": -1,
-					"name": "home",
-					"pathName": "pages/index/index",
+					"name": "我的砍价",
+					"pathName": "pages/my-kanjia/index",
 					"query": "",
 					"scene": null
 				},
 				{
 					"id": -1,
-					"name": "商品详情页面",
-					"pathName": "pages/goods-details/index",
-					"query": "id=134&inviter_id=456",
+					"name": "我的拼团",
+					"pathName": "pages/my-pintuan/index",
+					"query": "",
+					"scene": null
+				},
+				{
+					"id": -1,
+					"name": "专栏",
+					"pathName": "pages/topic-list/index",
+					"query": "",
+					"scene": null
+				},
+				{
+					"id": -1,
+					"name": "新人领券",
+					"pathName": "pages/freshman/index",
+					"query": "",
+					"scene": null
+				},
+				{
+					"id": -1,
+					"name": "home",
+					"pathName": "pages/index/index",
+					"query": "inviter_id=1210945",
 					"scene": 1011
 				},
 				{
 					"id": -1,
 					"name": "商品详情页面",
 					"pathName": "pages/goods-details/index",
-					"query": "id= 6761",
+					"query": "id=115291&inviter_id=456",
+					"scene": 1011
+				},
+				{
+					"id": -1,
+					"name": "商品详情页面",
+					"pathName": "pages/goods-details/index",
+					"query": "id=266924",
 					"scene": null
 				},
 				{
 					"id": -1,
 					"name": "砍价详情页面",
 					"pathName": "pages/goods-details/index",
-					"query": "id=6765",
+					"query": "id=115288",
 					"scene": null
 				},
 				{
 					"id": -1,
-					"name": "砍价详情页面",
+					"name": "砍价详情页面2",
 					"pathName": "pages/goods-details/index",
-					"query": "id=6765&kjJoinUid=701677",
+					"query": "id=115288&kjJoinUid=1210945",
 					"scene": null
 				},
 				{
@@ -75,6 +117,19 @@
 					"name": "拼团",
 					"pathName": "pages/goods-details/index",
 					"query": "id=6761",
+					"scene": null
+				},
+				{
+					"id": -1,
+					"name": "生成海报",
+					"pathName": "pages/goods-details/poster",
+					"query": "goodsid=6761",
+					"scene": null
+				},
+				{
+					"id": -1,
+					"name": "分销中心",
+					"pathName": "pages/fx/apply-status",
 					"scene": null
 				}
 			]

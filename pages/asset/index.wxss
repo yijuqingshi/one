@@ -1,8 +1,10 @@
+@import "/template/login/index.wxss";
+
 .asset {
   display: flex;
   padding-top:50rpx;
   height: 150rpx;
-  background-color: #E30050;
+  background-color: #e85654;
 }
 .asset .item {
   display: flex;
@@ -17,7 +19,7 @@
 .btn-view {
   text-align: right;
   height: 70rpx;
-  background-color: #E30050;
+  background-color: #e85654;
   padding-right:40rpx;
   padding-bottom:30rpx;  
 }

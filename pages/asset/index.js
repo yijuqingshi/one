@@ -1,5 +1,9 @@
 const app = getApp()
-const WXAPI = require('../../wxapi/main')
+const WXAPI = require('apifm-wxapi')
+const AUTH = require('../../utils/auth')
+import ApifmLogin from '../../template/login/index.js';
+
+var sliderWidth = 96; // 需要设置slider的宽度，用于计算中间位置
 
 Page({
 
@@ -7,18 +11,47 @@ Page({
    * 页面的初始数据
    */
   data: {
+    wxlogin: true,
     balance: 0.00,
     freeze: 0,
     score: 0,
     score_sign_continuous: 0,
-    cashlogs: undefined
+    cashlogs: undefined,
+
+    tabs: ["资金明细", "提现记录", "押金记录"],
+    activeIndex: 0,
+    sliderOffset: 0,
+    sliderLeft: 0,
+
+    withDrawlogs: undefined,
+    depositlogs: undefined,
+
+    rechargeOpen: false // 是否开启充值[预存]功能
   },
 
   /**
    * 生命周期函数--监听页面加载
    */
   onLoad: function (options) {
-
+    ApifmLogin.init(this)
+    const that = this;
+    wx.getSystemInfo({
+      success: function (res) {
+        that.setData({
+          sliderLeft: (res.windowWidth / that.data.tabs.length - sliderWidth) / 2,
+          sliderOffset: res.windowWidth / that.data.tabs.length * that.data.activeIndex
+        });
+      }
+    });
+    let rechargeOpen = wx.getStorageSync('RECHARGE_OPEN')
+    if (rechargeOpen && rechargeOpen == "1") {
+      rechargeOpen = true
+    } else {
+      rechargeOpen = false
+    }
+    this.setData({
+      rechargeOpen: rechargeOpen
+    })
   },
 
   /**
@@ -32,10 +65,22 @@ Page({
    * 生命周期函数--监听页面显示
    */
   onShow: function () {
+    AUTH.checkHasLogined().then(isLogined => {
+      this.setData({
+        wxlogin: isLogined
+      })
+      if (isLogined) {
+        this.doneShow();
+      }
+    })
+  },
+  doneShow: function () {
     const _this = this
     const token = wx.getStorageSync('token')
     if (!token) {
-      app.goLoginPageTimeOut()
+      this.setData({
+        wxlogin: false
+      })
       return
     }
     WXAPI.userAmount(token).then(function (res) {
@@ -47,7 +92,9 @@ Page({
         return
       }
       if (res.code == 2000) {
-        app.goLoginPageTimeOut()
+        this.setData({
+          wxlogin: false
+        })
         return
       }
       if (res.code == 0) {
@@ -59,15 +106,57 @@ Page({
         });
       }
     })
-    // 读取资金明细
+    this.fetchTabData(this.data.activeIndex)
+  },
+  fetchTabData(activeIndex){
+    if (activeIndex == 0) {
+      this.cashLogs()
+    }
+    if (activeIndex == 1) {
+      this.withDrawlogs()
+    }
+    if (activeIndex == 2) {
+      this.depositlogs()
+    }
+  },
+  cashLogs() {
+    const _this = this
     WXAPI.cashLogs({
-      token: token,
+      token: wx.getStorageSync('token'),
       page:1,
       pageSize:50
     }).then(res => {
       if (res.code == 0) {
         _this.setData({
           cashlogs: res.data
+        })
+      }
+    })
+  },
+  withDrawlogs() {
+    const _this = this
+    WXAPI.withDrawLogs({
+      token: wx.getStorageSync('token'),
+      page:1,
+      pageSize:50
+    }).then(res => {
+      if (res.code == 0) {
+        _this.setData({
+          withDrawlogs: res.data
+        })
+      }
+    })
+  },
+  depositlogs() {
+    const _this = this
+    WXAPI.depositList({
+      token: wx.getStorageSync('token'),
+      page:1,
+      pageSize:50
+    }).then(res => {
+      if (res.code == 0) {
+        _this.setData({
+          depositlogs: res.data.result
         })
       }
     })
@@ -107,25 +196,26 @@ Page({
   onShareAppMessage: function () {
 
   },
-
-  recharge: function (e) {
-    WXAPI.addTempleMsgFormid({
-      token: wx.getStorageSync('token'),
-      type: 'form',
-      formId: e.detail.formId
-    })
-    wx.navigateTo({
-      url: "/pages/recharge/index"
+  tabClick: function (e) {
+    this.setData({
+      sliderOffset: e.currentTarget.offsetLeft,
+      activeIndex: e.currentTarget.id
+    });
+    this.fetchTabData(e.currentTarget.id)
+  },
+  cancelLogin(){
+    wx.switchTab({
+      url: '/pages/my/index'
     })
   },
-  withdraw: function (e) {
-    WXAPI.addTempleMsgFormid({
-      token: wx.getStorageSync('token'),
-      type: 'form',
-      formId: e.detail.formId
-    })
-    wx.navigateTo({
-      url: "/pages/withdraw/index"
-    })
-  }
+  processLogin(e){
+    if (!e.detail.userInfo) {
+      wx.showToast({
+        title: '已取消',
+        icon: 'none',
+      })
+      return;
+    }
+    AUTH.register(this);
+  },
 })
